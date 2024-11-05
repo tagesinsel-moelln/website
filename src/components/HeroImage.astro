@@ -1,0 +1,15 @@
+---
+const {src} = Astro.props;
+---
+
+<div class="hero">
+    <img src={src} alt="">
+</div>
+
+<style>
+  .hero img {
+    width: 100vw;
+    object-fit: cover;
+    height: 520px;
+  }
+</style>

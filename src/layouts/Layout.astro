@@ -1,0 +1,144 @@
+---
+interface Props {
+	title?: string;
+}
+
+const { title } = Astro.props;
+
+import { getEntry } from "astro:content";
+
+const meta = await getEntry("general", "meta");
+const header = await getEntry("general", "header");
+const footer = await getEntry("general", "footer");
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href={meta.data.favicon} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title ?? meta.data.title }</title>
+	</head>
+    <body>
+        <nav class="flex-col justify-between">
+            <div class="flex gap-8">
+                <img class="logo--img" src={header.data.logo} alt="">
+                <div class="flex-col justify-between">
+                    <span class="logo--font py-8 ">{header.data.name}</span>
+                    <ul class="flex gap-8 pt-2">
+                        <a href="/">
+                            <li>Startseite</li>
+                        </a>
+                        <a href="/aktuelles">
+                            <li>Aktuelles</li>
+                        </a>
+                        <a href="/mitmachen">
+                            <li>Mitmachen</li>
+                        </a>
+                        <a href="/ueber_uns">
+                            <li>Über uns</li>
+                        </a>
+                        <a href="/spenden">
+                            <li>Spenden</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            
+        </nav>
+        <main>
+            <slot/>
+        </main>
+        <div class="footer flex">
+            <div class="flex-col flex-1">
+                <p class="text-2xl font-thin">{footer.data.name}</p>
+                <br>
+                <p>{footer.data.address1}<br/>{footer.data.address2}<br/>{footer.data.address3 ? footer.data.address3 : ""}</p>
+                <br>
+                {footer.data.phone ? (<p><a href={`tel:${footer.data.phone}`}>{footer.data.phone}</a></p>) : null}
+                {footer.data.mail ? (<p><a href={`mailto:${footer.data.mail}`}>{footer.data.mail}</a></p>) : null}
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <p>Datenschutz</p>
+                <p>Impressum</p>
+            </div>
+            <div class="flex-1"></div>
+            <div class="flex-1">
+                <img class="max-h-96" src={`/${footer.data.contact_img}`} alt="">
+                <p class="text-xl font-bold">{footer.data.contact_name}</p>
+                <p class="text-sm font-light">{footer.data.contact_position}</p>
+                <br>
+                {footer.data.contact_phone ? (<p><a href={`tel:${footer.data.contact_phone}`}>{footer.data.contact_phone}</a></p>) : null}
+                {footer.data.contact_mail ? (<p><a href={`mailto:${footer.data.contact_mail}`}>{footer.data.contact_mail}</a></p>) : null}
+            </div>
+        </div>
+        </body>
+</html>
+<style is:global>
+	:root {
+        box-sizing: border-box;
+        --primary-color: #cae6f3;
+        --background: #fff9f7;
+        --secondary-color: #fffebb;
+        --dark-color: #50514F;
+        --linen-color: #f8f1e7;
+
+        --content-padding: 32px;
+        --content-max-width: min(960px, 100vw);
+    }
+
+    p, 
+    a, 
+    span {
+        line-height: 1.8;
+        color: #50514F;
+    }
+    .logo--contianer {
+        height: 3em;
+        object-fit: contain;
+    }
+    .logo--img {
+        height: 8em;
+        object-fit: contain;
+    }
+    .logo--font {
+        font-size: 2em;
+        font-weight: 100;
+    }
+    body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    nav {
+        padding: var(--content-padding);
+    }
+    main {
+        min-height: 100vh;
+        /* min-width: min(960px, 100%);
+        max-width: 960px; */
+        align-self: center;
+        xbackground: var(--background);
+    }
+    .content {
+        /* xpadding: 32px; */
+    }
+    a:hover {
+        color: var(--primary-color);
+    }
+    .footer {
+        min-height: 480px;
+        background: var(--linen-color);
+        padding: var(--content-padding);
+    }
+</style>

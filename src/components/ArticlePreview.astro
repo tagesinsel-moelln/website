@@ -1,0 +1,18 @@
+---
+const {slug, title, markdownBody, thumbnail} = Astro.props;
+---
+<a href={`aktuelles/${slug}`}>
+    <div class="pb-16 border-b-2 mb-16">
+        {thumbnail ? (<img class="thumbnail" src={`/${thumbnail}`} alt=""/>) : null}
+        <h2 class="text-2xl py-4">{title}</h2>
+        <p class="line-clamp-5">{markdownBody}</p>
+    </div>
+</a>
+
+<style>
+.thumbnail {
+  object-fit: cover;
+  height: 320px;
+  width: 100%;
+}
+</style>

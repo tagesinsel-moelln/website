@@ -1,0 +1,12 @@
+---
+import { marked } from 'marked';
+import Headline from './Headline.astro';
+const {headline, markdown} = Astro.props;
+
+const content = marked.parse(markdown)
+---
+
+<div>
+    <Headline class="pb-8">{headline}</Headline>
+    <div class="prose w-full" set:html={content}></div>
+</div>

@@ -1,0 +1,29 @@
+---
+import { marked } from 'marked';
+import Layout from '../layouts/Layout.astro';
+import { getEntry } from "astro:content";
+import MarkdownWithHeadline from '../components/MarkdownWithHeadline.astro';
+import Headline from '../components/Headline.astro';
+import TeamAvatar from '../components/TeamAvatar.astro';
+
+const about = await getEntry("pages", "about");
+const {
+    title_institution,
+    body_institution,
+    title_motivation,
+    body_motivation,
+    title_team,
+    list_team
+    } = about.data;
+---
+
+<Layout>
+    <MarkdownWithHeadline markdown={body_institution} headline={title_institution} />
+    <MarkdownWithHeadline markdown={body_motivation} headline={title_motivation} />
+    <Headline class="py-8">{title_team}</Headline>
+    <div class="pb-16 flex gap-8 flex-wrap">
+        {(list_team ?? []).map(member => (<TeamAvatar imgSrc={member.image} name={member.name} position={member.position}></TeamAvatar>))}
+    </div>
+</Layout>
+
+

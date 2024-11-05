@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import Layout from '../layouts/Layout.astro';
+import ArticlePreview from '../components/ArticlePreview.astro';
+
+const news = await getCollection("news");
+console.log(news)
+---
+
+<Layout>
+	<main>
+    <div class="container">
+      {
+        news.map(n => (
+          <ArticlePreview 
+            thumbnail={n.data.thumbnail} 
+            title={n.data.title} 
+            slug={n.slug} 
+            markdownBody={n.body} 
+          />
+          ))
+          }
+    </div>
+    </main>
+</Layout>
+
+<style>
+.container {
+  padding: var(--content-padding);
+  max-width: var(--content-max-width);
+}
+</style>

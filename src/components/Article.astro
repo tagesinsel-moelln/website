@@ -1,0 +1,11 @@
+---
+import HeroImage from "./HeroImage.astro"
+const {title, markdownBody, thumbnail} = Astro.props;
+---
+<article>
+    {thumbnail ? (<HeroImage src={`/${thumbnail}`} />) : null}
+    <div class="container mx-auto pb-32">
+      <h2 class="py-8 text-2xl">{title}</h2>
+      <p class="prose">{markdownBody}</p>
+    </div>
+</article>

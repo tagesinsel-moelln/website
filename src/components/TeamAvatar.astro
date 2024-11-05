@@ -1,0 +1,8 @@
+---
+const {imgSrc, name, position} = Astro.props;
+---
+<div>
+    <img class="h-80 min-w-60 w-60 object-cover mb-4" src={imgSrc} alt="">
+    <p class="text-xl font-bold">{name}</p>
+    <p class="text-md font-light">{position}</p>
+</div>

@@ -1,16 +1,78 @@
 ---
+import { getCollection, getEntry } from "astro:content";
+import Layout from '../layouts/Layout.astro';
+import FAQ from '../components/FAQ.astro';
+import Section from '../components/Section.astro';
+import ArticlePreview from '../components/ArticlePreview.astro';
+import HeroImage from "../components/HeroImage.astro";
+import MarkdownWithHeadline from "../components/MarkdownWithHeadline.astro";
 
+const carrier = await getEntry("pages", "landing_page");
+
+const news = await getCollection("news");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+    <HeroImage src={carrier.data.hero}></HeroImage>
+    <Section class="flex section-1" color="bg-linen">
+        <div class="flex-1 mb-8 py-16">
+            <p class="claim text-4xl font-medium pb-8">{carrier.data.claim}</p>
+            <p class="intro">{carrier.data.intro}</p>
+            <br>
+        </div>
+        <div class="flex-1 px-8 py-16">
+            <p>
+                <a href="#intro">→ Was wir bieten</a>
+            </p>
+            <p>
+                <a href="/mitmachen">→ Mitmachen</a>
+            </p>
+        </div>
+    </Section>
+    <Section class="py-16">
+        <FAQ faq={carrier.data.faq}/>
+    </Section>
+    <Section class="py-16" id="intro">
+        <MarkdownWithHeadline headline={carrier.data.heading_intro} markdown={carrier.data.text_intro} />
+    </Section>
+    <!-- <div class="container content">
+
+        <h2 class="text-2xl font-semibold py-4">Unser Leistungsspektrum</h2>
+        {
+            offers.slice(0,0).map(offer => (
+                <h3 class="text-lg font-medium">{offer.data.title}</h3>
+                <p>{offer.data.description}</p>
+            ))
+        }
+        </div> -->
+    <Section class="py-16">
+        <!-- TODO - headline -->
+        <h2 class="text-2xl font-semibold py-4">Aktuelles</h2>
+        <div class="flex gap-8">
+            {
+                news.slice(0,3).map(n => (
+                    <div class="flex-1">
+                    <ArticlePreview 
+                        title={n.data.title}
+                        slug={n.slug}
+                        thumbnail={n.data.thumbnail}
+                        markdownBody={n.body}
+                        />
+                    </div>
+            ))
+        }
+    </div>
+    <div class="w-full flex justify-end">
+        <a href="/aktuelles">
+            <span>Alle Neuigkeiten →</span>
+        </a>
+    </div>
+</Section>
+</Layout>
+
+<style>
+    .section-1 {
+        
+        min-height: 480px;
+    }
+</style>

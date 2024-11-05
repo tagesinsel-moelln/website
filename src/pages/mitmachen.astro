@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry } from "astro:content";
+import MarkdownWithHeadline from '../components/MarkdownWithHeadline.astro';
+import Headline from '../components/Headline.astro';
+import TeamAvatar from '../components/TeamAvatar.astro';
+import HeroImage from '../components/HeroImage.astro';
+import Section from '../components/Section.astro';
+
+const about = await getEntry("pages", "participate");
+const {
+    title_participate,
+    body_participate,
+    title_carrier,
+    list_carrier,
+    } = about.data;
+---
+
+<Layout>
+    <HeroImage src={about.data.hero}/>
+    <Section class="py-16">
+        <MarkdownWithHeadline markdown={body_participate} headline={title_participate} />
+        <Headline class="py-8">{title_carrier}</Headline>
+        <div>
+            {(list_carrier ?? []).map(member => (<TeamAvatar imgSrc={member.thumbnail} name={member.name} position={member.body}></TeamAvatar>))}
+        </div>
+    </div>
+    <Section/>
+</Layout>
