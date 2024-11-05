@@ -1,0 +1,262 @@
+media_folder: "src/assets/images" # Location where files will be stored in the repo
+public_folder: "src/assets/images" # The src attribute for uploaded media
+local_backend: true
+
+locale: "de"
+backend:
+  name: git-gateway
+editor:
+  preview: false
+
+collections:
+  - label: "Allgemein"
+    name: "general"
+    files:
+      - label: "Metadaten"
+        name: "mata"
+        file: "src/content/general/meta.json"
+        fields:
+          - label: "Titel"
+            name: "title"
+            widget: string
+            hint: "Das ist der Titel der auf jedem Tab angezeigt wird"
+
+          - label: "favicon"
+            name: favicon
+            widget: image
+            hint: "Das ist das Bild das auf jedem Tab angezeigt wird"
+
+      - label: "Header"
+        name: "header"
+        file: "src/content/general/header.json"
+        fields:
+          - label: "Name"
+            name: "name"
+            widget: string
+
+          - label: "Logo"
+            name: logo
+            widget: image
+
+      - label: "Footer"
+        name: "footer"
+        file: "src/content/general/footer.json"
+        fields:
+          - label: "Name"
+            name: "name"
+            widget: string
+
+          - label: "Adresszeile 1"
+            name: "address1"
+            widget: string
+
+          - label: "Adresszeile 2"
+            name: "address2"
+            widget: string
+
+          - label: "Adresszeile 3"
+            name: "address3"
+            widget: string
+            required: false
+
+          - label: "Telefon"
+            name: "phone"
+            widget: string
+            required: false
+
+          - label: "E-Mail"
+            name: "mail"
+            widget: string
+            required: false
+
+          - label: "Ansprechperson Name"
+            name: "contact_name"
+            widget: "string"
+
+          - label: "Ansprechperson Position"
+            name: "contact_position"
+            widget: "string"
+
+          - label: "Ansprechperson Bild"
+            name: "contact_img"
+            widget: "image"
+
+          - label: "Ansprechperson Telefon"
+            name: "contact_phone"
+            widget: "string"
+            required: false
+
+          - label: "Ansprechperson E-Mail"
+            name: "contact_mail"
+            widget: "string"
+            required: false
+
+  - label: "Seiten"
+    name: "pages"
+    files:
+      - label: "Startseite"
+        name: "landing"
+        file: "src/content/pages/landing_page.json"
+        fields:
+          - label: "Bild"
+            name: hero
+            widget: image
+
+          - label: "Claim"
+            name: "claim"
+            widget: "string"
+
+          - label: "Kurzvorstellung"
+            name: "intro"
+            widget: "string"
+
+          - label: "Link1"
+            name: "link1"
+            widget: "string"
+
+          - label: "Link2"
+            name: "link2"
+            widget: "string"
+
+          - label: "Überschrift Vorstellung"
+            name: "heading_intro"
+            widget: "string"
+
+          - label: "Text Vorstellung"
+            name: "text_intro"
+            widget: "markdown"
+
+          - label: "FAQ"
+            name: faq
+            widget: list
+            fields:
+              - label: "Frage"
+                name: question
+                widget: string
+
+              - label: "Antwort"
+                name: answer
+                widget: string
+
+      - label: "Aktuelles"
+        name: news
+        file: "src/content/pages/news.json"
+        fields:
+          - label: "Optionaler Text"
+            name: body
+            widget: markdown
+            required: false
+            hint: "Dieser Text kann optional unter /aktuelles über den Einträgen angezeigt werden."
+
+      - name: "participate"
+        label: "Mitmachen"
+        file: "src/content/pages/participate.json"
+        fields:
+          - label: "Bild Mitmachen"
+            name: "hero"
+            widget: "image"
+
+          - label: "Titel Mitmachen"
+            name: "title_participate"
+            widget: "string"
+
+          - label: "Text Mitmachen"
+            name: "body_participate"
+            widget: "markdown"
+
+          - label: "Titel Tärger"
+            name: "title_carrier"
+            widget: "string"
+
+          - label: "Tärger"
+            name: "list_carrier"
+            widget: "list"
+            fields:
+              - label: Name
+                name: name
+                widget: string
+
+              - label: "Bild"
+                name: "thumbnail"
+                widget: "image"
+
+              - label: Text
+                name: body
+                widget: string
+
+      - label: "Über uns"
+        name: "about"
+        file: "src/content/pages/about.json"
+        fields:
+          - name: "title_institution"
+            label: "Überschrift Vorstellung Tagesinsel"
+            widget: "text"
+
+          - name: "body_institution"
+            label: "Text Vorstellung Tagesinsel"
+            widget: "markdown"
+
+          - name: "title_motivation"
+            label: "Überschrift Motivation"
+            widget: "text"
+
+          - name: "body_motivation"
+            label: "Text Motivation"
+            widget: "markdown"
+
+          - name: "title_team"
+            label: "Überschrift Team"
+            widget: "text"
+
+          - name: "list_team"
+            label: "Team"
+            widget: "list"
+            fields:
+              - label: Bild
+                name: image
+                widget: "image"
+
+              - label: Name
+                name: name
+                widget: "string"
+
+              - label: Position
+                name: position
+                widget: "string"
+
+      - label: "Spenden"
+        name: "donations"
+        file: "src/content/pages/donations.json"
+        fields:
+          - label: Titelbild
+            name: "hero"
+            widget: image
+
+          - label: "Überschrift"
+            name: headline
+            widget: string
+
+          - name: "body"
+            widget: "markdown"
+
+  - name: "news"
+    label: "Aktuelles"
+    folder: "src/content/news"
+    create: true
+    fields:
+      - label: "Titel"
+        name: "title"
+        widget: "string"
+
+      - label: "Bild"
+        name: "thumbnail"
+        widget: "image"
+        required: false
+
+      - label: "Datum"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Text"
+        name: "body"
+        widget: "markdown"
