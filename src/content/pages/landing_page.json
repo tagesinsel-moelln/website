@@ -1,0 +1,27 @@
+{
+  "hero": "src/assets/images/dominik-lange-vuoiqw4oeli-unsplash.jpg",
+  "claim": "Wir sind das erste Tageshospiz in Schleswig-Holstein",
+  "intro": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  "faq": [
+    {
+      "question": "Wann habt ihr geöffnet?",
+      "answer": "Immer von Montags bis Freitags zwischen 8:30 und 16:00 Uhr."
+    },
+    {
+      "question": "Wie viele Plätze gibt es in der Einrichtung?",
+      "answer": "Aktuell gibt es 8 Plätze."
+    },
+    {
+      "question": "fwsdfadcav",
+      "answer": "231451322r"
+    },
+    {
+      "question": "Das iset eine fragte",
+      "answer": "sdjnfljkasnl"
+    }
+  ],
+  "link1": "Was bieten wir?",
+  "link2": "Mitmachen",
+  "heading_intro": "Was ist ein Tageshospiz/ Was für Leistungen/Angebote existieren?",
+  "text_intro": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+}
