@@ -4,7 +4,11 @@ local_backend: true
 
 locale: "de"
 backend:
-  name: git-gateway
+  name: github
+  repo: tagesinsel-moelln/website # Path to your GitHub repository
+  branch: main
+  base_url: https://0cmb984hnh.execute-api.eu-central-1.amazonaws.com # your apigateway endpoint
+  auth_endpoint: /prod/auth
 editor:
   preview: false
 
