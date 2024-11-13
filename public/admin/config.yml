@@ -180,6 +180,10 @@ collections:
                 name: name
                 widget: string
 
+              - label: "Link zu Website"
+                name: link
+                widget: string
+
               - label: "Bild"
                 name: "thumbnail"
                 widget: "image"
