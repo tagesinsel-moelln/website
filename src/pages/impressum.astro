@@ -1,10 +1,19 @@
 ---
+import { marked } from 'marked';
 import Layout from '../layouts/Layout.astro';
+import { getEntry } from "astro:content";
+import Section from '../components/Section.astro';
+import MarkdownWithHeadline from '../components/MarkdownWithHeadline.astro';
+
+const imprint = await getEntry("pages", "imprint");
 ---
 
 <Layout>
-	<h1>Impressum</h1>
+	<Section class="py-16">
+		<MarkdownWithHeadline markdown={imprint.data.body} headline={imprint.data.headline}/>
+	</Section>
 </Layout>
+
 
 <style>
 </style>
