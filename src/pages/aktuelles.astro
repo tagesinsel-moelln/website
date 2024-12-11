@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 import ArticlePreview from '../components/ArticlePreview.astro';
+import {fromSrc} from "../utils";
 
 const news = await getCollection("news");
 console.log(news)
@@ -13,7 +14,7 @@ console.log(news)
       {
         news.map(n => (
           <ArticlePreview 
-            thumbnail={n.data.thumbnail} 
+            thumbnail={fromSrc(n.data.thumbnail)} 
             title={n.data.title} 
             slug={n.slug} 
             markdownBody={n.body} 

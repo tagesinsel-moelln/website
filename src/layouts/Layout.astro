@@ -6,6 +6,7 @@ interface Props {
 const { title } = Astro.props;
 
 import { getEntry } from "astro:content";
+import {fromSrc} from "../utils";
 
 const meta = await getEntry("general", "meta");
 const header = await getEntry("general", "header");
@@ -25,7 +26,7 @@ const footer = await getEntry("general", "footer");
     <body>
         <nav class="flex-col justify-between">
             <div class="flex gap-8">
-                <img class="logo--img" src={header.data.logo} alt="">
+                <img class="logo--img" src={fromSrc(header.data.logo)} alt="">
                 <div class="flex-col justify-between">
                     <span class="logo--font py-8 ">{header.data.name}</span>
                     <ul class="flex gap-8 pt-2">
@@ -74,7 +75,7 @@ const footer = await getEntry("general", "footer");
             </div>
             <div class="flex-1"></div>
             <div class="flex-1">
-                <img class="max-h-96" src={`/${footer.data.contact_img}`} alt="">
+                <img class="max-h-96" src={fromSrc(footer.data.contact_img)} alt="">
                 <p class="text-xl font-bold">{footer.data.contact_name}</p>
                 <p class="text-sm font-light">{footer.data.contact_position}</p>
                 <br>

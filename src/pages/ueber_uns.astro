@@ -5,6 +5,7 @@ import { getEntry } from "astro:content";
 import MarkdownWithHeadline from '../components/MarkdownWithHeadline.astro';
 import Headline from '../components/Headline.astro';
 import TeamAvatar from '../components/TeamAvatar.astro';
+import {fromSrc} from "../utils";
 
 const about = await getEntry("pages", "about");
 const {
@@ -22,7 +23,7 @@ const {
     <MarkdownWithHeadline markdown={body_motivation} headline={title_motivation} />
     <Headline class="py-8">{title_team}</Headline>
     <div class="pb-16 flex gap-8 flex-wrap">
-        {(list_team ?? []).map(member => (<TeamAvatar imgSrc={member.image} name={member.name} position={member.position}></TeamAvatar>))}
+        {(list_team ?? []).map(member => (<TeamAvatar imgSrc={fromSrc(member.image)} name={member.name} position={member.position}></TeamAvatar>))}
     </div>
 </Layout>
 

@@ -6,6 +6,7 @@ import Section from '../components/Section.astro';
 import ArticlePreview from '../components/ArticlePreview.astro';
 import HeroImage from "../components/HeroImage.astro";
 import MarkdownWithHeadline from "../components/MarkdownWithHeadline.astro";
+import {fromSrc} from "../utils";
 
 const carrier = await getEntry("pages", "landing_page");
 
@@ -13,7 +14,7 @@ const news = await getCollection("news");
 ---
 
 <Layout>
-    <HeroImage src={carrier.data.hero}></HeroImage>
+    <HeroImage src={fromSrc(carrier.data.hero)}></HeroImage>
     <Section class="flex section-1" color="bg-linen">
         <div class="flex-1 mb-8 py-16">
             <p class="claim text-4xl font-medium pb-8">{carrier.data.claim}</p>

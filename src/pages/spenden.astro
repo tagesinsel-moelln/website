@@ -5,12 +5,13 @@ import { getEntry } from "astro:content";
 import HeroImage from '../components/HeroImage.astro';
 import Section from '../components/Section.astro';
 import MarkdownWithHeadline from '../components/MarkdownWithHeadline.astro';
+import {fromSrc} from "../utils";
 
 const donations = await getEntry("pages", "donations");
 ---
 
 <Layout>
-    <HeroImage src={donations.data.hero}/>
+    <HeroImage src={fromSrc(donations.data.hero)}/>
     <Section class="py-16">
         <MarkdownWithHeadline markdown={donations.data.body} headline={donations.data.headline}/>
     </Section>
