@@ -23,7 +23,7 @@ const {
         <MarkdownWithHeadline markdown={body_participate} headline={title_participate} />
         <Headline class="py-8">{title_carrier}</Headline>
         <div>
-            {(list_carrier ?? []).map(member => (<TeamAvatar imgSrc={member.thumbnail} name={member.name} position={member.body}></TeamAvatar>))}
+            {(list_carrier ?? []).map(member => (<TeamAvatar imgSrc={fromSrc(member.thumbnail)} name={member.name} position={member.body}></TeamAvatar>))}
         </div>
     </div>
     <Section/>
