@@ -56,7 +56,7 @@ const news = await getCollection("news");
                     <ArticlePreview 
                         title={n.data.title}
                         slug={n.slug}
-                        thumbnail={n.data.thumbnail}
+                        thumbnail={fromSrc(n.data.thumbnail)}
                         markdownBody={n.body}
                         />
                     </div>
